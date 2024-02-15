@@ -1,1 +1,1 @@
-# LangChain
+# Build up local Generative AI 

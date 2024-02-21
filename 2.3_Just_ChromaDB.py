@@ -4,8 +4,6 @@
 # Today, the concept of embeddings is revolutionizing the way AI systems understand and process information. 
 # Let’s explore the world of embeddings and how they lead us to the powerful concept of vector databases.
 
-
-
 import chromadb
 chroma_client = chromadb.Client()
 

@@ -1,25 +1,21 @@
 # Bring in deps
 import streamlit as st 
+
 from langchain_community.llms import LlamaCpp
 from langchain_community.embeddings import LlamaCppEmbeddings
+from langchain_community.document_loaders import WebBaseLoader
 from langchain_community.document_loaders import TextLoader
 from langchain_community.vectorstores import Chroma
+
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from langchain.text_splitter import CharacterTextSplitter
 
-model_name = "llama-2-7b-chat.Q4_K_M.gguf"
-# llm = Llama(model_path=f"e:/models/llama/{model_name}")
+model_path = "/mnt/e/models/llama/llama-2-7b-chat.Q4_K_M.gguf"
 
 # Customize the layout
-st.set_page_config(page_title="DOCAI", page_icon="🤖", layout="wide", )     
-st.markdown(f"""
-            <style>
-            .stApp {{background-image: url("https://images.unsplash.com/photo-1509537257950-20f875b03669?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"); 
-                     background-attachment: fixed;
-                     background-size: cover}}
-         </style>
-         """, unsafe_allow_html=True)
+st.set_page_config(page_title="Learning Godel", page_icon="🤖", layout="wide", )     
+st.markdown(f"""<style>.stApp {{background-image: url("https://aixpertlab.netlify.app/images/background.png"); background-attachment: fixed;background-size: cover}}style>""", unsafe_allow_html=True)
 
 # function for writing uploaded file in temp
 def write_text_file(content, file_path):
@@ -33,16 +29,14 @@ def write_text_file(content, file_path):
 
 # set prompt template
 prompt_template = """Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer.
-
 {context}
-
 Question: {question}
 Answer:"""
 prompt = PromptTemplate(template=prompt_template, input_variables=["context", "question"])
 
 # initialize hte LLM & Embeddings
-llm = LlamaCpp(model_path=f"e:/models/llama/{model_name}")
-embeddings = LlamaCppEmbeddings(model_path=f"e:/models/llama/{model_name}")
+llm = LlamaCpp(model_path=model_path)
+embeddings = LlamaCppEmbeddings(model_path=model_path)
 llm_chain = LLMChain(llm=llm, prompt=prompt)
 
 st.title("📄 Document Conversation 🤖")
@@ -51,10 +45,11 @@ uploaded_file = st.file_uploader("Upload an article", type="txt")
 if uploaded_file is not None:
     content = uploaded_file.read().decode('utf-8')
     # st.write(content)
-    file_path = "temp/file.txt"
+    file_path = "temp/chatbot.txt"
     write_text_file(content, file_path)   
-    
     loader = TextLoader(file_path)
+    print(content)
+    print(file_path)
     docs = loader.load()    
     text_splitter = CharacterTextSplitter(chunk_size=100, chunk_overlap=0)
     texts = text_splitter.split_documents(docs)

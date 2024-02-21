@@ -1,14 +1,11 @@
-# faiss not support Python 1.12
+from langchain_community.llms       import LlamaCpp, CTransformers
+from langchain_community.embeddings import LlamaCppEmbeddings, HuggingFaceEmbeddings
+from langchain_community.vectorstores import Chroma, FAISS
+from langchain_community.document_loaders import DirectoryLoader, TextLoader, PyPDFLoader, WebBaseLoader
 
-from langchain_community.llms import LlamaCpp
+from langchain.text_splitter import RecursiveCharacterTextSplitter, CharacterTextSplitter
 from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain
-from langchain_community.llms import CTransformers
-from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain.vectorstores import FAISS
-from langchain.chains import RetrievalQA
-from langchain_community.document_loaders import DirectoryLoader, TextLoader, PyPDFLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.chains import LLMChain, RetrievalQA
 
 def create_vector_store(data_dir):
     '''Create a vector store from PDF files'''
@@ -17,20 +14,17 @@ def create_vector_store(data_dir):
 
     # interpret information in the documents
     documents = loader.load()
-    splitter = RecursiveCharacterTextSplitter(chunk_size=500,
-                                              chunk_overlap=50)
+    splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
     texts = splitter.split_documents(documents)
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2",
-                                       model_kwargs={'device': 'cpu'})
+    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2", model_kwargs={'device': 'cpu'})
     # create the vector store database
     db = FAISS.from_documents(texts, embeddings)
     return db
 
-
 def load_llm():
     # Adjust GPU usage based on your hardware
     llm = LlamaCpp(
-        model_path="models/llama-2-7b-chat.Q4_0.gguf",  # Path to the model file
+        model_path = "/mnt/e/models/llama/llama-2-7b-chat.Q4_0.gguf",
         n_gpu_layers=40,  # Number of GPU layers (adjust based on available GPUs)
         n_batch=512,  # Batch size for model processing
         verbose=False,  # Enable detailed logging for debugging

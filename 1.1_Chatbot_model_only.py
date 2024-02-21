@@ -5,10 +5,10 @@ from langchain.chains import LLMChain
 
 # Load the LlamaCpp language model, adjust GPU usage based on your hardware
 llm = LlamaCpp(
-    model_path="e:/models/llama/llama-2-7b-chat.Q4_K_M.gguf",
+    model_path = "/mnt/e/models/llama/llama-2-7b-chat.Q4_K_M.gguf",
     n_gpu_layers=40,
     n_batch=512,  # Batch size for model processing
-    verbose=False,  # Enable detailed logging for debugging
+    # verbose=False,  # Enable detailed logging for debugging
 )
 
 # Define the prompt template with a placeholder for the question

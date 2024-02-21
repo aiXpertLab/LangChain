@@ -1,0 +1,40 @@
+Godel's  Proof 
+Acknowledgments 
+
+The  authors  gratefully  acknowledge  the  generous 
+assistance  they  received  from  Professor  John  C.  Cooley 
+of  Columbia  University.  He  read  critically  an  early 
+draft  of  the  manuscript,  and  helped  to  clarify  the  struc- 
+ture of  the  argument  and  to  improve  the  exposition  of 
+points  in  logic.  We  wish  to  thank  Scientific  American 
+for  permission  to  reproduce  several  of  the  diagrams  in 
+the  text,  which  appeared  in  an  article  on  Godel's  Proof 
+in  the  June  1956  issue  of  the  magazine.  We  are  in- 
+debted to  Professor  Morris  Kline  of  New  York  Univer- 
+sity for  helpful  suggestions  regarding  the  manuscript. 
+
+Introduction 
+
+In  1931  there  appeared  in  a  German  scientific  peri- 
+odical a  relatively  short  paper  with  the  forbidding  title 
+Uber  formal  unentscheidbare  Satze  der  Principia 
+Mathematica  und  verwandter  Systeme  (On  Formally 
+Undecidable  Propositions  of  Principia  Mathematica 
+and  Related  Systems).  Its  author  was  Kurt  Godel, 
+then  a  young  mathematician  of  25  at  the  University  of 
+Vienna  and  since  1938  a  permanent  member  of  the  In- 
+stitute for  Advanced  Study  at  Princeton.  The  paper  is 
+a  milestone  in  the  history  of  logic  and  mathematics. 
+When  Harvard  University  awarded  Godel  an  honor- 
+ary degree  in  1952,  the  citation  described  the  work  as 
+one  of  the  most  important  advances  in  logic  in  modern 
+times. 
+
+At  the  time  of  its  appearance,  however,  neither  the 
+title  of  Godel's  paper  nor  its  content  was  intelligible  to 
+most  mathematicians.  The  Principia  Mathematica 
+mentioned  in  the  title  is  the  monumental  three-vol- 
+ume treatise  by  Alfred  North  Whitehead  and  Bertrand 
+Russell  on  mathematical  logic  and  the  foundations  of 
+3 
+

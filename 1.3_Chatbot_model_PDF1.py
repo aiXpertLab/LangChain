@@ -1,7 +1,7 @@
 from langchain_community.llms       import LlamaCpp, CTransformers
 from langchain_community.embeddings import LlamaCppEmbeddings, HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma, FAISS
-from langchain_community.document_loaders import DirectoryLoader, TextLoader, PyPDFLoader, WebBaseLoader
+from langchain_community.document_loaders import DirectoryLoader, TextLoader, PyPDFLoader, WebBaseLoader, PyPDFDirectoryLoader
 
 from langchain.text_splitter import RecursiveCharacterTextSplitter, CharacterTextSplitter
 from langchain.prompts import PromptTemplate

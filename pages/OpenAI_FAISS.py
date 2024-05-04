@@ -21,7 +21,8 @@ EB_MODEL = "text-embedding-3-small"
 
 def query_pdf(query):
     # Load document using PyPDFLoader document loader
-    loader = PyPDFLoader("data/pdf/Python Programming - An Introduction To Computer Science.pdf")
+    loader = PyPDFLoader(
+        "../LangChain_Semantic_Search/data/pdf/Python Programming - An Introduction To Computer Science.pdf")
     documents = loader.load()
     # Split document in chunks
     text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=30, separator="\n")
